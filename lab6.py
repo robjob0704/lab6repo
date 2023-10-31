@@ -7,7 +7,14 @@ result = ""
 
 complete = False
 
-
+def decode(encoded_password):
+    decoded_password = ""
+    for char in encoded_password:
+        if char in decode_dict:
+            decoded_password += decode_dict[char]
+        else:
+            decoded_password += char
+    return decoded_password
 while not complete:
 
     print("Menu")
@@ -23,6 +30,8 @@ while not complete:
             result += encode_dict[char]
         print("Your password has been encoded and stored!\n")
     if sel == 2:
-        print(f"The encoded password is {result}, and the original password is {enc_pass}.\n")
+        original_password = decode(result)
+        print(f"The encoded password is {result}, and the original password is {original_password}.\n")
+        result = ''
     if sel == 3:
         complete = True
